@@ -1,9 +1,15 @@
+#All the Import files
 from random import randint as RI
 from time import sleep
 from sys import exit
+
+#Create a Empty Board
 board = []
+
 def create_board():
-     global board
+     '''Creating a Empty Board'''
+     
+     global board #use the Global variabe board
      print('\n\nGame Start...')
      board = ['-','-','-',
               '-','-','-',
@@ -12,6 +18,7 @@ def create_board():
 
 #Displaying the Board
 def display():
+     '''display the board'''
      print(board[0] + '|' + board[1] + '|' + board[2])
      print(board[3] + '|' + board[4] + '|' + board[5])
      print(board[6] + '|' + board[7] + '|' + board[8])
@@ -20,6 +27,9 @@ def display():
 
 #Choosing the board position
 def choose():
+     '''Here player has to choose the board position to put 'X'
+     function does not take any argument'''
+     
      c = input('Your turn:(choose between 1-9): ')
      if c == 'q':
           exit(0)
@@ -40,6 +50,7 @@ def choose():
 
 #generating random number
 def computer_entry():
+     '''This is a fuction to create random integer for the computer's input position'''
      global board
      r = RI(0,8)
      if board[r] != '-':
@@ -53,6 +64,8 @@ def computer_entry():
 
 
 def check():
+     '''This function check wheather any one wins'''
+     
      #for rows
      row1 = (board[0] == board[1] == board[2] != '-')
      row2 = (board[3] == board[4] == board[5] != '-')
@@ -84,12 +97,16 @@ def check():
           exit_game()
 
 def draw():
+     '''This fuction checks for draw match when there is no position for any entry'''
+     
      global board
      if '-' not in board:
           print('Match Draw...')
           exit_game()
 
 def exit_game():
+     '''After the conclusion of a game, this function ask for a new game!!!'''
+     
      s = input('Do you wanna play? (Press y/n): ')
      if s == 'y' or s == 'Y':
           create_board()
